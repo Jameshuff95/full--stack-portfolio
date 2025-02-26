@@ -1,14 +1,32 @@
 // frontend/api/send-message.ts
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import express, { Request, Response } from 'express';
-import messageRoutes from './routes/messageRoutes';
+import { Pool } from 'pg';
 
-const app = express();
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
 
-app.use(express.json());
-app.use('/api/messages', messageRoutes);
+export default async (req: VercelRequest, res: VercelResponse) => {
+  if (req.method === 'POST') {
+    const { name, message } = req.body;
+    const client = await pool.connect();
 
-export default (req: VercelRequest, res: VercelResponse) => {
-  const expressHandler = app as any; // Explicitly cast to any
-  expressHandler(req, res);
+    try {
+      await client.query(
+        'INSERT INTO messages (name, message) VALUES ($1, $2)',
+        [name, message]
+      );
+      res.status(200).send('Form data received');
+    } catch (error) {
+      console.error('Database query error:', error);
+      res.status(500).send('Internal Server Error');
+    } finally {
+      client.release();
+    }
+  } else {
+    res.status(405).send('Method Not Allowed');
+  }
 };

@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  user-select: none;
+}
+
+*::-webkit-scrollbar { 
+  width: 10px; 
+  height: 10px;
+  background: #555;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb { 
+  background: #fff;
+  border-radius: 10px; 
+}
+
+*::-webkit-scrollbar-track { 
+  background: #555; 
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-track:hover { 
+  background: #555; 
+}
+
+
+.theme-light {
+  --color-primary: #ffffff;
+  --color-secondary: #171717;
+  --color-text-base: var(--color-secondary);
+  --color-bg-primary: linear-gradient(45deg, pink, blue);
+}
+
+.theme-dark {
+  --color-primary: #171717;
+  --color-secondary: #ffffff;
+  --color-text-base: var(--color-secondary);
+  --color-bg-primary: linear-gradient(45deg, red, black);
+}
+
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  background: var(--color-bg-primary);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+.animate-boink {
+  animation: boink 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+@keyframes boink {
+  0%, 100% {
+    transform: translateX(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
