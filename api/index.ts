@@ -12,12 +12,3 @@ export default (req: VercelRequest, res: VercelResponse) => {
   const expressHandler = app as any; // Explicitly cast to any
   expressHandler(req, res);
 };
-
-/*
-
-// Connect to your database
-mongoose.connect(process.env.DATABASE_URL as string, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Database connected!'))
-  .catch((error) => console.error('Database connection error:', error));
-
-*/
