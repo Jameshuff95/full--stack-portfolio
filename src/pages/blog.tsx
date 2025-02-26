@@ -7,11 +7,11 @@ import { ReactNode, useState } from "react";
 import { FaArrowLeft, FaCheck} from "react-icons/fa6";
 
 // image imports
-import image1 from '../../../public/placeholder1.png';
-import image2 from '../../../public/placeholder2.png';
-import image3 from '../../../public/placeholder3.png';
-import image4 from '../../../public/placeholder1.png';
-import image5 from '../../../public/placeholder2.png';
+import image1 from '../../public/placeholder1.png';
+import image2 from '../../public/placeholder2.png';
+import image3 from '../../public/placeholder3.png';
+import image4 from '../../public/placeholder1.png';
+import image5 from '../../public/placeholder2.png';
 
 
 interface Props {
